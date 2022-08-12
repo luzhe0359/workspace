@@ -6,6 +6,8 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const { VueLoaderPlugin } = require("vue-loader")
+const { DefinePlugin } = require("webpack")
 
 const getStyleLoaders = (preProcessor) => {
     return [
@@ -68,14 +70,18 @@ module.exports = {
                 type: 'asset/resource', // 将资源文件输出到指定目录
             },
             {
-                test: /\.jsx?$/,
+                test: /\.js?$/,
                 include: path.resolve(__dirname, '../src'),
                 loader: 'babel-loader',
                 options: {
                     cacheDirectory: true, // 开启babel缓存
                     cacheCompression: false, // 关闭缓存压缩(不会使用 Gzip 压缩每个 Babel transform)
                 }
-            }
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+            },
         ]
     },
     plugins: [
@@ -106,6 +112,13 @@ module.exports = {
                     },
                 },
             ],
+        }),
+        new VueLoaderPlugin(),
+        // cross-env定义的环境变量给打包工具使用
+        // DefinePlugin定义环境变量给源代码使用，从而解决vue3页面警告的问题
+        new DefinePlugin({
+            __VUE_OPTIONS_API__: true,
+            __VUE_PROD_DEVTOOLS__: false,
         }),
     ],
     optimization: {
@@ -152,7 +165,7 @@ module.exports = {
         }
     },
     resolve: {
-        extensions: ['.jsx', '.js', '.json'], // 尝试按顺序解析这些后缀名
+        extensions: ['.vue', '.js', '.json'], // 尝试按顺序解析这些后缀名
     },
     devtool: "source-map",
     mode: 'production'
