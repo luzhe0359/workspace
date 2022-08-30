@@ -8,6 +8,10 @@ const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader")
 const { DefinePlugin } = require("webpack")
+// 按需引入element-plus
+const AutoImport = require('unplugin-auto-import/webpack')
+const Components = require('unplugin-vue-components/webpack')
+const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 
 // 获取环境变量
 const isProd = process.env.NODE_ENV === "production";
@@ -26,7 +30,12 @@ const getStyleLoaders = (preProcessor) => {
                 },
             },
         },
-        preProcessor,
+        preProcessor && {
+            loader: preProcessor,
+            options:
+                preProcessor === 'sass-loader' ?
+                    { additionalData: `@use "@/styles/element/index.scss" as *;`, } : {}
+        },
     ].filter(Boolean);
 };
 
@@ -83,7 +92,10 @@ module.exports = {
             },
             {
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                loader: 'vue-loader',
+                options: {
+                    cacheDirectory: path.resolve('../node_modules/.cache/vue-loader')
+                }
             },
         ]
     },
@@ -123,6 +135,16 @@ module.exports = {
             __VUE_OPTIONS_API__: true,
             __VUE_PROD_DEVTOOLS__: false,
         }),
+        // 按需引入element-plus
+        AutoImport({
+            resolvers: [ElementPlusResolver()],
+        }),
+        Components({
+            resolvers: [ElementPlusResolver({
+                // 自定义主题
+                importStyle: "sass",
+            })],
+        }),
     ].filter(Boolean),
     optimization: {
         minimize: isProd,
@@ -161,7 +183,25 @@ module.exports = {
         // 代码分割配置
         splitChunks: {
             chunks: "all", // 对所有模块都进行分割
-            // 其他内容用默认配置即可
+            // 将比较大的包单独打包
+            cacheGroups: {
+                vue: {
+                    name: "chunk-vue",
+                    test: /[\\/]node_modules[\\/]vue(.*)/,
+                    priority: 30,
+                },
+                elementPlus: {
+                    name: "chunk-elementPlus",
+                    test: /[\\/]node_modules[\\/]element-plus(.*)/,
+                    priority: 20,
+                },
+                // 将其他剩余的包打包在一起
+                libs: {
+                    name: "chunk-libs",
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: 10, // 权重最低，优先考虑前面内容
+                },
+            }
         },
         // 提取runtime文件(防止代码分割后缓存失效)
         runtimeChunk: {
@@ -170,6 +210,10 @@ module.exports = {
     },
     resolve: {
         extensions: ['.vue', '.js', '.json'], // 尝试按顺序解析这些后缀名
+        // 配置别名
+        alias: {
+            '@': path.resolve(__dirname, '../src')
+        }
     },
     devServer: {
         static: {
@@ -182,6 +226,7 @@ module.exports = {
         hot: true,
         historyApiFallback: true, // 解决前端路由刷新404问题
     },
+    performance: false, // 关闭性能分析，提示打包速度
     devtool: isProd ? "source-map" : 'cheap-module-source-map',
     mode: isProd ? 'production' : 'development'
 }
