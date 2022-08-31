@@ -94,7 +94,7 @@ module.exports = {
                 test: /\.vue$/,
                 loader: 'vue-loader',
                 options: {
-                    cacheDirectory: path.resolve('../node_modules/.cache/vue-loader')
+                    cacheDirectory: path.resolve(__dirname, '../node_modules/.cache/vue-loader')
                 }
             },
         ]
@@ -106,7 +106,7 @@ module.exports = {
             cache: true, // 开启eslint缓存
             cacheLocation: path.resolve(
                 __dirname,
-                "../node_modules/.cache/.eslint-loader"
+                "../node_modules/.cache/.eslint-cache"
             ), // 缓存的路径
         }),
         new HtmlWebpackPlugin({
