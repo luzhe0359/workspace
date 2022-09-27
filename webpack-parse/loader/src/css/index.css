@@ -1,0 +1,11 @@
+.box1 {
+    width: 100px;
+    height: 100px;
+    background: url(../images/01.jpg) no-repeat center center;
+}
+
+.box2{
+    width: 100px;
+    height: 100px;
+    background: url(../images/02.png) no-repeat center center;
+}

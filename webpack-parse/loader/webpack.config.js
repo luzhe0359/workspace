@@ -33,10 +33,19 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: "./loaders/babel-loader/index.js", // banner-loader 添加loader的作者
+        loader: "./loaders/babel-loader/index.js", // babel-loader 解析es6语法
         options: {
-          presets: ["@babel/preset-env"], // 只能预设
+          presets: ["@babel/preset-env"], // 智能预设
         },
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/,
+        loader: "./loaders/file-loader", // file-loader 解析文件
+        type: "javascript/auto", // 阻止wabpack默认处理图片资源、只使用file-loader处理
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
