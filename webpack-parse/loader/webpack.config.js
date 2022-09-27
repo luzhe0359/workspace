@@ -31,6 +31,13 @@ module.exports = {
           //   age: 22, // additionalProperties 规定不能再额外追加属性
         },
       },
+      {
+        test: /\.js$/,
+        loader: "./loaders/babel-loader/index.js", // banner-loader 添加loader的作者
+        options: {
+          presets: ["@babel/preset-env"], // 只能预设
+        },
+      },
     ],
   },
   plugins: [
