@@ -41,13 +41,13 @@ module.exports.pitch = function (remainingRequest) {
   // 2. 引入css-loader 处理后续的资源
   // 3. 创建style标签，将处理后的内容插入到页面中
   const script = `
-  import style from "!!${relativePath}";
+        import style from "!!${relativePath}";
         const styleEl = document.createElement('style');
         styleEl.innerHTML = style;
         document.head.appendChild(styleEl);
     `;
 
-  // 中止后面loader执行
+  // 终止后面loader执行
   return script;
 
   /*  
@@ -61,6 +61,6 @@ module.exports.pitch = function (remainingRequest) {
     import style from "!!${relativeRequest}"
       引入css-loader处理后的css文件
       为什么需要css-loader处理css文件，不是我们直接读取css文件使用呢？
-      因为可能存在@import导入css语法，这些语法就要通过css-loader解析才能变成一个css文件，否则我们引入的css资源会缺少
+      因为可能存在@import导入css语法，这些语法要通过css-loader解析才能变成一个css文件，否则我们引入的css资源会缺少
   */
 };

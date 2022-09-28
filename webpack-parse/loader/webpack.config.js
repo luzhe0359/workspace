@@ -20,7 +20,7 @@ module.exports = {
         // use: ['./loaders/demo/test2.js', './loaders/demo/test1.js',] // 不能再同步loader中使用异步
         // loader: './loaders/demo/test3.js', // raw loader
         // use: ['./loaders/demo/test4.js', './loaders/demo/test5.js', './loaders/demo/test6.js',]  // pitch loader
-        loader: "./loaders/clean-log-loader.js", // clean-log-loader 清除console.log
+        loader: "./loaders/clean-log-loader", // clean-log-loader 清除console.log
       },
       {
         test: /\.js$/,

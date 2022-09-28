@@ -1,4 +1,3 @@
-
 /*
     loader本质是一个函数
     当webpack解析资源时，会调用响应的loader去处理
@@ -9,6 +8,6 @@
 */
 
 module.exports = function (context, map, meta) {
-    console.log(context);
-    return context
-}
+  console.log(context);
+  return context;
+};
