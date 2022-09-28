@@ -45,7 +45,9 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        // use: ["style-loader", "css-loader"],
+        // use: ["./loaders/style-loader"], // 使用自定义 style-loader
+        use: ["./loaders/style-loader", "css-loader"], // 使用自定义 style-loader
       },
     ],
   },
