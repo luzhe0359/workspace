@@ -17,7 +17,7 @@ class BannerWebpackPlugin {
         // 判断是否存在
         return extensions.includes(extension);
       });
-      console.log(assets);
+      // console.log(assets); // [ 'js/main.js', 'js/18.js' ]
       // 3. 遍历并添加注释
       const prefix = `/*
 * Author: ${this.options.author}
