@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TestPlugin = require("./plugins/test-plugin");
 const BannerWebpackPlugin = require("./plugins/banner-webpack-plugin");
 const CleanWebpackPlugin = require("./plugins/clean-webpack-plugin");
+const AnalyzeWebpackPlugin = require("./plugins/analyze-webpack-plugin");
 
 module.exports = {
   entry: path.resolve(__dirname, "./src/main.js"),
@@ -25,9 +26,10 @@ module.exports = {
     }),
     // new TestPlugin(), // 成功输出打印信息
     new BannerWebpackPlugin({
-      author: "小路",
+      author: "小路", // 追加作者等信息
     }),
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin(), // 清除打包输出的内容，即dist
+    new AnalyzeWebpackPlugin(), // 分析打包后代码体积
   ],
   mode: "production",
 };
