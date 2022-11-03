@@ -5,6 +5,8 @@ class CleanWebpackPlugin {
       // 2. 获取打包输出的目录
       const outputPath = compiler.options.output.path; // D:\workspace\webpack5\workspace\webpack-parse\plugin\dist
       const fs = compiler.outputFileSystem;
+      // 判断dist文件夹是否存在
+      if (!fs.existsSync(outputPath)) return;
       // 3. 通过fs删除打包输出的目录下所有文件
       this.removeFiles(fs, outputPath);
     });
