@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let reg = /\bsrc\b\s*=\s*[\'\"]?([^\'\"]*)[\'\"]?/i
+        // let img1 = '<img src="http:fdsfdf.png">'
+        // let img2 = '<img src="http:fdsfd333f.gif" width="200px">'
+        // let img3 = '<img height="200px" src="https://fdsfdf.jpg" width="200px">'
+        // console.log(img1.match(reg)[1]);
+        // console.log(img2.match(reg)[1]);
+        // console.log(img3.match(reg)[1]);
+
+        let links = "[百度10086](https://www.baidu.com/feeds/10086) [百度666](https://www.baidu.com/feeds/666)"
+        console.log(links.replace(new RegExp('\\[(.*?)\\]\\(https://www.baidu.com/feeds/(.*?)\\)', 'gim'), '<a href="localhost:3000/$2">$1</>'));
+    </script>
+</body>
+
+</html>
