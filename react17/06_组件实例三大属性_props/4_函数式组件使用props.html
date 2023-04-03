@@ -1,0 +1,77 @@
+<!--
+ * @Description: helloworld
+ * @Author: zugelu
+ * @Date: 2021-07-27 13:58:29
+ * @LastEditors: zugelu
+ * @LastEditTime: 2021-07-28 16:55:06
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test1"></div>
+</body>
+<script src="../js/react.development.js"></script>
+<script src="../js/react-dom.development.js"></script>
+<script src="../js/babel.min.js"></script>
+<script src="../js/prop-types.js"></script>
+
+<script type="text/babel">
+    // class Person extends React.Component {
+    //     static propTypes = {
+    //         name: PropTypes.string.isRequired, // 限制为字符串，且必传
+    //         sex: PropTypes.string,
+    //         age: PropTypes.number,
+    //         speak: PropTypes.func // 限制为函数
+    //     }
+    //     static defaultProps = {
+    //         age: 20,
+    //         sex: "*"
+    //     }
+
+    //     render() {
+    //         const { name, age, sex } = this.props;
+    //         return (
+    //             <ul>
+    //                 <li>姓名：{name}</li>
+    //                 <li>年龄：{age}</li>
+    //                 <li>性别：{sex}</li>
+    //             </ul>
+    //         )
+    //     }
+    // }
+
+    function Person(props) {
+        const { name, age, sex } = props;
+        return (
+            <ul>
+                <li>姓名：{name}</li>
+                <li>年龄：{age}</li>
+                <li>性别：{sex}</li>
+            </ul>
+        )
+    }
+
+    Person.propTypes = {
+        name: PropTypes.string.isRequired, // 限制为字符串，且必传
+        sex: PropTypes.string,
+        age: PropTypes.number,
+        speak: PropTypes.func // 限制为函数
+    }
+    Person.defaultProps = {
+        age: 20,
+        sex: "*"
+    }
+
+    ReactDOM.render(<Person name="Jack" sex="男" />, document.querySelector("#test1"))
+
+</script>
+
+</html>

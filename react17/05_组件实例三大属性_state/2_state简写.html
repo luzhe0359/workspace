@@ -1,0 +1,40 @@
+<!--
+ * @Description: helloworld
+ * @Author: zugelu
+ * @Date: 2021-07-27 13:58:29
+ * @LastEditors: zugelu
+ * @LastEditTime: 2021-07-28 14:03:28
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test"></div>
+</body>
+<script src="../js/react.development.js"></script>
+<script src="../js/react-dom.development.js"></script>
+<script src="../js/babel.min.js"></script>
+
+<script type="text/babel">
+    class MyComponent extends React.Component {
+        state = { isHot: false }
+        render() {
+            return <h2 onClick={this.changeWeather}>今天天气：{this.state.isHot ? '炎热' : '凉爽'} </h2>
+        }
+        changeWeather = () => {
+            const { isHot } = this.state;
+            this.setState({ isHot: !isHot });
+        }
+    }
+
+    ReactDOM.render(<MyComponent />, document.querySelector("#test"))
+</script>
+
+</html>

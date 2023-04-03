@@ -1,0 +1,29 @@
+<!--
+ * @Description: helloworld
+ * @Author: zugelu
+ * @Date: 2021-07-27 13:58:29
+ * @LastEditors: zugelu
+ * @LastEditTime: 2021-07-27 14:15:52
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2_使用js创建虚拟DOM</title>
+</head>
+
+<body>
+    <div id="test"></div>
+</body>
+<script src="../js/react.development.js"></script>
+<script src="../js/react-dom.development.js"></script>
+
+<script type="text/javascript">
+    const VDOM = React.createElement("h1", { id: 'title', className: 'hello' }, React.createElement('span', {}, 'hello world'));
+    ReactDOM.render(VDOM, document.querySelector("#test"))
+</script>
+
+</html>

@@ -1,0 +1,62 @@
+<!--
+ * @Description: helloworld
+ * @Author: zugelu
+ * @Date: 2021-07-27 13:58:29
+ * @LastEditors: zugelu
+ * @LastEditTime: 2021-07-29 14:03:21
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test1"></div>
+</body>
+<script src="../js/react.development.js"></script>
+<script src="../js/react-dom.development.js"></script>
+<script src="../js/babel.min.js"></script>
+
+<script type="text/babel">
+    class Person extends React.Component {
+        state = { isHot: true }
+
+        showData1 = () => {
+            const { input1 } = this
+            alert(input1.value)
+        }
+
+        showData2 = () => {
+            const { input2 } = this
+            const { isHot } = this.state
+            this.setState({
+                isHot: !isHot
+            })
+        }
+
+        changeInput = (el) => {
+            this.input1 = el
+            console.log("调用了", el) // 不频繁调用el, 无关紧要的
+        }
+        render() {
+            return (
+                <div>
+                    <h2>今天天气是{this.state.isHot ? "炎热" : "凉爽"}</h2>
+                    {/* <input ref={c => { this.input1 = c; console.log('调用了', c) }} type="text" /> &nbsp; &nbsp; */}
+                    <input ref={this.changeInput} type="text" /> &nbsp; &nbsp;
+                    <button onClick={this.showData1}>按钮</button><br />
+                    <input ref={c => this.input2 = c} onBlur={this.showData2} type="text" />
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<Person name="Jack" age="20" sex="男" />, document.querySelector("#test1"))
+</script>
+
+</html>
