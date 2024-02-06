@@ -1,0 +1,132 @@
+<!--
+ * @Description: 
+ * @Author: zugelu
+ * @Date: 2021-07-21 10:22:28
+ * @LastEditors: zugelu
+ * @LastEditTime: 2021-07-21 14:57:50
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./index.js"></script>
+    <script>
+        // 测试 shallowReactive
+        const proxy1 = shallowReactive({
+            name: '范德萨',
+            age: 32,
+            car: {
+                name: '兰博基尼',
+                color: 'red'
+            }
+        })
+        // 拦截到了读和写
+        // proxy1.name += '=='
+        // 拦截到了读, 但是拦截不到写
+        // proxy1.car.name += '=='
+        // 拦截了删除
+        // delete proxy1.name;
+        // 拦截了读取数据, 但是拦截不到删除
+        // delete proxy1.car.name
+
+        // 测试 reactive
+        const proxy2 = reactive({
+            name: '范德萨',
+            age: 32,
+            car: {
+                name: '兰博基尼',
+                color: 'red'
+            }
+        })
+
+        // 拦截到了读和修改
+        // proxy2.name += '=='
+        // 拦截到了读和修改
+        // proxy2.car.name = '=='
+        // 拦截了删除
+        // delete proxy2.name;
+        // 拦截了读取数据, 拦截到删除
+        // delete proxy2.car.name
+
+
+        // =========================================================================
+        // 测试 shallowReadonly
+        const proxy3 = shallowReadonly({
+            name: '范德萨',
+            age: 32,
+            cars: ['奔驰', "宝马"]
+        })
+        // 可以读取
+        // console.log(proxy3.name)
+        // 只能读取，不能修改
+        // proxy3.name = 'FDA'
+        // 不能删除
+        // delete proxy3.name;
+        // 只读，但是拦截不了深度修改
+        // 拦截到读取,可以修改
+        // proxy3.cars[0] = '奥迪'
+        // console.log(proxy3);
+        // 拦截到读取,可以删除
+        // delete proxy3.cars[0]
+        // console.log(proxy3);
+
+        // 测试 readonly
+        const proxy4 = readonly({
+            name: '范德萨',
+            age: 32,
+            cars: ['奔驰', "宝马"]
+        })
+        // 可以读取数据
+        // console.log(proxy4.name)
+        // 只能读取数据，不能修改数据
+        // proxy4.name = "范德范德"
+        // index.js:83 只能读取数据，不能删除数据
+        // delete proxy4.name;
+        // 拦截了读取，只能读取数据，不能修改数据
+        // proxy4.cars[0] = '奥迪'
+        // console.log(proxy4);
+        // 拦截了读取， 只能读取数据，不能删除数据
+        // delete proxy4.cars[0]
+
+        // =================================
+
+        // const ref1 = shallowRef({
+        //     name: '发的欧冠',
+        //     car: {
+        //         color: "red"
+        //     }
+        // })
+        // console.log(ref1.value);
+        // 劫持到了修改数据
+        // ref1.value = "==="
+        // 劫持到了读取数据
+        // ref1.value.car = "=="
+
+        const ref2 = ref({
+            name: '发的欧冠',
+            car: {
+                color: "red"
+            }
+        })
+        // console.log(ref2.value);
+        // 劫持到了修改数据
+        // ref2.value = "==="
+        // 劫持到了修改数据
+        // ref2.value.car = "==="
+
+        // ==================================================
+        console.log(isRef(ref({})));
+        console.log(isReactive(reactive({})));
+        console.log(isReadonly(readonly({})));
+        console.log(isProxy(reactive({})));
+    </script>
+</body>
+
+</html>
