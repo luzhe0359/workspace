@@ -1,0 +1,65 @@
+<!--
+ * @Description: 
+ * @Author: zugelu
+ * @Date: 2021-07-15 11:21:31
+ * @LastEditors: zugelu
+ * @LastEditTime: 2021-07-15 14:33:10
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const user = {
+        name: "小明",
+        age: 22,
+        wife: {
+            name: '小花',
+            age: 18
+        }
+    }
+
+    const proxyUser = new Proxy(user, {
+        // 拦截读取属性值
+        get(target, prop) {
+            console.log("get 调用了")
+            return Reflect.get(target, prop)
+        },
+        // 拦截设置属性值或添加新属性
+        set(target, prop, val) {
+            console.log('set 修改了');
+            return Reflect.set(target, prop, val)
+        },
+        // 拦截删除属性
+        deleteProperty(target, prop) {
+            return Reflect.deleteProperty(target, prop)
+        }
+    })
+
+    // 通过代理对象获取目标中的某个属性
+    console.log(proxyUser.name)
+    // 通过代理对象更新目标对象中的某个值
+    proxyUser.name = '小张'
+    console.log(user)
+    // 通过代理对象向目标对象添加一个新属性
+    proxyUser.gender = '男'
+    console.log(user)
+    // 删除
+    delete proxyUser.name
+    console.log(user);
+
+    // 更新目标对象中的某个属性对象中的属性值
+    proxyUser.wife.name = '佐伊'
+    console.log(user);
+</script>
+
+</html>
