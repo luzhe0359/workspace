@@ -2,15 +2,13 @@
  * @Author: luzhe0359
  * @Date: 2024-02-06 17:44:10
  * @LastEditors: luzhe0359
- * @LastEditTime: 2024-02-07 11:12:24
- * @Description: // ? 切换引入的js，查看对应效果
+ * @LastEditTime: 2024-02-07 14:57:33
+ * @Description: // ? 切换引入的js，查看对应效果  PS：修改序号即可显示对应效果，若不设置序号，则显示最后一个效果
  */
 
-// * 01_threejs快速入门
-// import './01_threejs快速入门/01_创建3D场景'
-// import './01_threejs快速入门/02_透视投影相机'
-// import './01_threejs快速入门/03_渲染器'
-// import './01_threejs快速入门/04_三维坐标系'
-// import './01_threejs快速入门/05_光源对物体表面的影响'
-// import './01_threejs快速入门/06_相机控件OrbitControls'
-import './01_threejs快速入门/07_平行光与环境光'
+const modules = import.meta.glob('./01_threejs快速入门/*.js') // 导入多个模块
+const Index = '' // 路径序号
+const allPath = Object.keys(modules) // 所有路径
+const lastPath = allPath[allPath.length - 1] // 最后一个路径
+const showPath = (Index && allPath.find(p => p.includes(Index))) || lastPath // 要显示的路径
+modules[showPath]() // 引入对应js模块
