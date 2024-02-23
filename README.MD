@@ -16,7 +16,9 @@ Vue3 学习 —2021-07
 
 ### webpack4
 
-Webpack4 学习 —2022-08
+Webpack4 学习 —2022-08  
+学自 B 站
+[尚硅谷新版 Webpack 实战教程(从入门到精通)](https://www.bilibili.com/video/BV1e7411j7T5) 、[尚硅谷 Webpack5 入门到原理(面试开发一条龙)](https://www.bilibili.com/video/BV14T4y1z7sw)
 
 ### webpack-parse
 
