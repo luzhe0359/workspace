@@ -16,9 +16,12 @@ Vue3 学习 —2021-07
 
 ### webpack4
 
-Webpack4 学习 —2022-08  
-学自 B 站
-[尚硅谷新版 Webpack 实战教程(从入门到精通)](https://www.bilibili.com/video/BV1e7411j7T5) 、[尚硅谷 Webpack5 入门到原理(面试开发一条龙)](https://www.bilibili.com/video/BV14T4y1z7sw)
+Webpack4 学习 —2022-08
+
+资源：
+
+- [尚硅谷新版 Webpack 实战教程(从入门到精通)](https://www.bilibili.com/video/BV1e7411j7T5)
+- [尚硅谷 Webpack5 入门到原理(面试开发一条龙)](https://www.bilibili.com/video/BV14T4y1z7sw)
 
 ### webpack-parse
 
@@ -39,3 +42,7 @@ React17 学习 —2023-11
 ### three.js
 
 Three.js 学习 —2024-02
+
+资源：
+
+- [Three.js 中文网](http://www.webgl3d.cn)
