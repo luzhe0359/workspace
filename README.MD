@@ -14,6 +14,11 @@
 
 Vue3 学习 —2021-07
 
+资源：
+
+- [尚硅谷Vue3入门到实战，最新版vue3+TypeScript前端开发教程](https://www.bilibili.com/video/BV1Za4y1r7KE)
+- [尚硅谷Vue2.0+Vue3.0全套教程丨vuejs从入门到精通](https://www.bilibili.com/video/BV1Zy4y1K7SH)
+
 ### webpack4
 
 Webpack4 学习 —2022-08
@@ -46,3 +51,4 @@ Three.js 学习 —2024-02
 资源：
 
 - [Three.js 中文网](http://www.webgl3d.cn)
+
