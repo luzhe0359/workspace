@@ -52,3 +52,10 @@ Three.js 学习 —2024-02
 
 - [Three.js 中文网](http://www.webgl3d.cn)
 
+### java-se
+
+java-se 学习  —2024-10
+
+资源:
+
+- [尚硅谷Java零基础全套视频教程(宋红康主讲，java入门自学必备)](https://www.bilibili.com/video/BV1PY411e7J6)
