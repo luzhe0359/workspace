@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/chapter06_oop1/chapter06_oop1.iml" filepath="$PROJECT_DIR$/chapter06_oop1/chapter06_oop1.iml" />
       <module fileurl="file://$PROJECT_DIR$/chapter07_oop2/chapter07_oop2.iml" filepath="$PROJECT_DIR$/chapter07_oop2/chapter07_oop2.iml" />
       <module fileurl="file://$PROJECT_DIR$/chapter08_oop3/chapter08_oop3.iml" filepath="$PROJECT_DIR$/chapter08_oop3/chapter08_oop3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chapter09_exception/chapter09_exception.iml" filepath="$PROJECT_DIR$/chapter09_exception/chapter09_exception.iml" />
       <module fileurl="file://$PROJECT_DIR$/java-se.iml" filepath="$PROJECT_DIR$/java-se.iml" />
     </modules>
   </component>
